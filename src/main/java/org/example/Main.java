@@ -13,9 +13,9 @@ public class Main {
     public static void main(String[] args) {
         CurrencyDownloadApi api = new CurrencyDownloadApi();
         Currency currency = new Currency();
-        api.getCurrency("usd", "2023-10-01");
+        System.out.println(api.getCurrency("usd", "2023-10-31"));
         api.getCurrency("usd", "2023-09-29");
-        api.getCurrencyAcctualCourse("usd");
+        System.out.println(api.getCurrencyAcctualCourse("usd"));
         }
     }
 

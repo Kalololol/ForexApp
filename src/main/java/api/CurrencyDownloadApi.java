@@ -16,20 +16,21 @@ public class CurrencyDownloadApi {
      private final HttpClient client = HttpClient.newBuilder().build();
      ObjectMapper objectMapper = new ObjectMapper();
 
-     public void getCurrency(String code, String courseDay) {
+     public double getCurrency(String code, String courseDay) {
           SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
           try {
                Date date = dateFormat.parse(courseDay);
-               courseDownload(code, date);
+               return courseDownload(code, date);
           } catch (ParseException e) {
                e.printStackTrace();
           }
+          return 0;
      }
-     public void getCurrencyAcctualCourse(String code) {
+     public double getCurrencyAcctualCourse(String code) {
           Date todayDay = new Date();
-          courseDownload(code, todayDay);
+          return courseDownload(code, todayDay);
      }
-     public void courseDownload(String code, Date day){
+     public double courseDownload(String code, Date day){
           String result = "";
           USDExchangeRateToPLN usdExchangeRateToPLN = new USDExchangeRateToPLN();
           usdExchangeRateToPLN.setCourseDate(day);
@@ -60,16 +61,14 @@ public class CurrencyDownloadApi {
                     Currency currency = objectMapper.readValue(result, Currency.class);
                     List<Rate> rateList = currency.getRates();
                     Rate rate = rateList.get(0);
-
-                    usdExchangeRateToPLN.setCode(currency.getCode());
-                    usdExchangeRateToPLN.setMidValue(rate.getMid());
-
+//                    usdExchangeRateToPLN.setCode(currency.getCode());
+//                    usdExchangeRateToPLN.setMidValue(rate.getMid());
+                    return rate.getMid();
 
                } catch (IOException e) {
                     throw new RuntimeException(e);
                } catch (InterruptedException e) {
                     throw new RuntimeException(e);
                }
-
      }
 }
