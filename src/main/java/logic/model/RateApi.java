@@ -1,16 +1,19 @@
-package api;
+package logic.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class Rate {
+import java.util.Date;
+
+public class RateApi {
+
     @JsonProperty("no")
     private String no;
     @JsonProperty("effectiveDate")
-    private String effectiveDate;
+    private Date effectiveDate;
     @JsonProperty("mid")
     private double mid;
-    public Rate(){}
-    public Rate(String no, String effectiveDate, double mid) {
+    public RateApi(){}
+    public RateApi(String no, Date effectiveDate, double mid) {
         this.no = no;
         this.effectiveDate = effectiveDate;
         this.mid = mid;
@@ -23,11 +26,11 @@ public class Rate {
         this.no = no;
     }
 
-    public String getEffectiveDate() {
+    public Date getEffectiveDate() {
         return effectiveDate;
     }
 
-    public void setEffectiveDate(String effectiveDate) {
+    public void setEffectiveDate(Date effectiveDate) {
         this.effectiveDate = effectiveDate;
     }
 

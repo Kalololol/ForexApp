@@ -1,26 +1,24 @@
-package api;
+package logic.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.List;
 
-public class Currency {
+public class CurrencyApi {
     @JsonProperty("table")
     private String table;
     @JsonProperty("currency")
     private String currency;
     @JsonProperty("code")
     private String code;
-    private List<Rate> rates;
+    private List<RateApi> rateApis;
 
-
-    public Currency(){}
-
-    public Currency(String table, String currency, String code, List<Rate> rates) {
+    public CurrencyApi(){}
+    public CurrencyApi(String table, String currency, String code, List<RateApi> rateApis) {
         this.table = table;
         this.currency = currency;
         this.code = code;
-        this.rates = rates;
+        this.rateApis = rateApis;
     }
     public String getTable() {
         return table;
@@ -46,12 +44,12 @@ public class Currency {
         this.code = code;
     }
 
-    public List<Rate> getRates() {
-        return rates;
+    public List<RateApi> getRates() {
+        return rateApis;
     }
 
-    public void setRates(List<Rate> rates) {
-        this.rates = rates;
+    public void setRates(List<RateApi> rateApis) {
+        this.rateApis = rateApis;
     }
 
     @Override
@@ -60,7 +58,7 @@ public class Currency {
                 "table='" + table + '\'' +
                 ", currency='" + currency + '\'' +
                 ", code='" + code + '\'' +
-                ", rates=" + rates +
+                ", rates=" + rateApis +
                 '}';
     }
 }
