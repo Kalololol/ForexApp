@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbd6da8a-0bf1-4a28-bb5a-da92e49eff01" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/logic/JsonMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/model/Currency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/test/CurrencyTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/model/CurrencyApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/CurrencyDownloadApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/CurrencyDownloadApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/Rate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/model/RateApi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/api/USDExchangeRateToPLN.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/CurrencyDownloadApiTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/CurrencyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/CurrencyTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
