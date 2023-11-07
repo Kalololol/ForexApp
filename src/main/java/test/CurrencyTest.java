@@ -4,21 +4,26 @@ import model.Currency;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
-import java.util.function.BooleanSupplier;
 
 public class CurrencyTest {
     private CurrencyDownloadApi currencyDownloadApi = new CurrencyDownloadApi();
     private JsonMapper jsonMapper = new JsonMapper();
 
-    String jsonCourseUsd = currencyDownloadApi.getCurrency("usd","2023-11-03");
-    String jsonResult = "{\"table\":\"A\",\"currency\":\"dolar ameryka�ski\",\"code\":\"USD\",\"rates\":[{\"no\":\"211/A/NBP/2023\",\"effectiveDate\":\"2023-11-02\",\"mid\":4.1963}]}";
-
-
-    Currency currencyTest = new Currency(new Date(2023-10-31), "usd", 4.1963);
     @Test
-    public void jsonMapperTest(){
-        Assertions.assertEquals(jsonMapper.mapToCurrency(jsonResult), currencyTest);
+    public void jsonMapToCurrencyTest(){
+        String jsonResult = "{\"table\":\"A\",\"currency\":\"dolar ameryka�ski\",\"code\":\"USD\",\"rates\":[{\"no\":\"211/A/NBP/2023\",\"effectiveDate\":\"2023-11-02\",\"mid\":4.1963}]}";
+        Currency jsonResultMapToCurrency = jsonMapper.jsonMapToCurrency(jsonResult);
+
+        LocalDate date = LocalDate.of(2023, 11, 2);
+        Currency currencyTest = new Currency(date, "usd", 4.1963);
+
+        Assertions.assertEquals(jsonResultMapToCurrency.getCode().toLowerCase(), currencyTest.getCode());
+        Assertions.assertEquals(jsonResultMapToCurrency.getDate(), currencyTest.getDate());
+        Assertions.assertEquals(jsonResultMapToCurrency.getMid(), currencyTest.getMid());
     }
+    
 }
 

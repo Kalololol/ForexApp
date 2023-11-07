@@ -4,8 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbd6da8a-0bf1-4a28-bb5a-da92e49eff01" name="Changes" comment="">
+    <list default="true" id="fbd6da8a-0bf1-4a28-bb5a-da92e49eff01" name="Changes" comment="create Test">
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/CurrencyDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/model/RateDTO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/api/CurrencyDownloadApi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/api/CurrencyDownloadApi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/JsonMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/JsonMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/model/CurrencyApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/model/RateApi.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/model/Currency.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/model/Currency.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/test/CurrencyTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/CurrencyTest.java" afterDir="false" />
     </list>
@@ -53,7 +60,7 @@
       <recent name="C:\Users\Karol\IdeaProjects\AppForex" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="JUnit.CurrencyTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.Main" />
       <module name="AppForex.main" />
@@ -92,6 +99,60 @@
       <option name="presentableId" value="Default" />
       <updated>1698262345742</updated>
     </task>
+    <task id="LOCAL-00001" summary="create Test">
+      <created>1699000667070</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1699000667070</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="create Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="create Test" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/main/java/api/CurrencyDownloadApi.java</url>
+          <line>18</line>
+          <properties class="api.CurrencyDownloadApi" method="getCurrencyExchangeRate">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/api/CurrencyDownloadApi.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

@@ -14,28 +14,27 @@ import java.util.Date;
 
 public class CurrencyDownloadApi {
      private final HttpClient client = HttpClient.newBuilder().build();
-     ObjectMapper objectMapper = new ObjectMapper();
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
-     public String getCurrency(String code, String courseDay) {
-          SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+     public String getCurrencyExchangeRate(String code, String courseDay) {
+         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
          Date date = new Date();
           try {
                date = dateFormat.parse(courseDay);
           } catch (ParseException e) {
                e.printStackTrace();
           }
-          return courseDownload(code, date);
+          return ExchangeRateDownload(code, date);
      }
-     public String getCurrencyAcctualCourse(String code) {
-          Date todayDay = new Date();
-          return courseDownload(code, todayDay);
-     }
-     public String courseDownload(String code, Date day){
-          try {
-                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-                    String formattedDate = dateFormat.format(day);
-                    HttpResponse<String> response;
+     private String ExchangeRateDownload(String code, Date day){
 
+         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+         String formattedDate = dateFormat.format(day);
+         HttpResponse<String> response;
+         if(!(code.equals("usd")) && !(code.equals("eur"))){
+             throw new RuntimeException("Wrong code currency!");
+         }
+          try {
                     do {
                          URI uri = URI.create(("http://api.nbp.pl/api/exchangerates/rates/a/" + code + "/" + formattedDate));
                          HttpRequest request = HttpRequest.newBuilder()
