@@ -17,6 +17,8 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.15.2'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.5'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+
 }
 
 test {

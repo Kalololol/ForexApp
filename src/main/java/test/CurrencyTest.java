@@ -4,9 +4,8 @@ import model.Currency;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.util.Date;
+
 
 public class CurrencyTest {
     private CurrencyDownloadApi currencyDownloadApi = new CurrencyDownloadApi();
@@ -24,6 +23,6 @@ public class CurrencyTest {
         Assertions.assertEquals(jsonResultMapToCurrency.getDate(), currencyTest.getDate());
         Assertions.assertEquals(jsonResultMapToCurrency.getMid(), currencyTest.getMid());
     }
-    
+
 }
 
