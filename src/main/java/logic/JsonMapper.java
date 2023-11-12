@@ -18,6 +18,9 @@ public class JsonMapper {
 
     public Currency jsonMapToCurrency(String objectJson){
         try {
+            if (objectJson == null) {
+                return null;
+            }
             CurrencyDTO currencyDTO = objectMapper.readValue(objectJson, CurrencyDTO.class);
             List<RateDTO> rateDTOList = currencyDTO.getRates();
             RateDTO rateDTO = rateDTOList.get(0);
@@ -28,12 +31,15 @@ public class JsonMapper {
             Currency result = new Currency(date, currencyDTO.getCode(), rateDTO.getMid());
             return result;
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
+            return null;
         }
     }
     public String currencyMapToJson (Currency currency){
-        String result = "";
         try {
+//            if (currency == null){
+//                return null;
+//            }
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");
             objectMapper.setDateFormat(df);
             return objectMapper.writeValueAsString(currency);

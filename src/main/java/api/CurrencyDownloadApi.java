@@ -18,11 +18,12 @@ public class CurrencyDownloadApi {
 
      public String getCurrencyExchangeRate(String code, String courseDay) {
          SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-         Date date = new Date();
+         Date date;
           try {
                date = dateFormat.parse(courseDay);
           } catch (ParseException e) {
                e.printStackTrace();
+               return null;
           }
           return ExchangeRateDownload(code, date);
      }
@@ -32,7 +33,7 @@ public class CurrencyDownloadApi {
          String formattedDate = dateFormat.format(day);
          HttpResponse<String> response;
          if(!(code.equals("usd")) && !(code.equals("eur"))){
-             throw new RuntimeException("Wrong code currency!");
+             return null;
          }
           try {
                     do {
@@ -50,13 +51,17 @@ public class CurrencyDownloadApi {
                               formattedDate = dateFormat.format(day);
                          }
                     }while (response.statusCode() == 404);
-
+                    if(response.statusCode() == 400){
+                        return null;
+                    }
                     return response.body();
 
                } catch (IOException e) {
-                    throw new RuntimeException(e);
+                      e.printStackTrace();
+                      return null;
                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
+                      e.printStackTrace();
+                      return null;
                }
      }
 }

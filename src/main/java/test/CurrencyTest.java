@@ -1,3 +1,5 @@
+package test;
+
 import api.CurrencyDownloadApi;
 import logic.JsonMapper;
 import model.Currency;
@@ -22,6 +24,20 @@ public class CurrencyTest {
         Assertions.assertEquals(jsonResultMapToCurrency.getCode().toLowerCase(), currencyTest.getCode());
         Assertions.assertEquals(jsonResultMapToCurrency.getDate(), currencyTest.getDate());
         Assertions.assertEquals(jsonResultMapToCurrency.getMid(), currencyTest.getMid());
+    }
+    @Test
+    public void jsonMapToCurrencyWrongJsonTest(){
+        String jsonResult = "{\"table\":\"A\",\"currency\":\"dolar ameryka�ski\",\"codes\":\"USD\",\"rates\":[{\"no\":\"211/A/NBP/2023\",\"Date\":\"2023-11-02\",\"mid\":4.1963}]}";
+        Currency result = jsonMapper.jsonMapToCurrency(jsonResult);
+
+        Assertions.assertNull(result);
+    }
+    @Test
+    public void jsonMapToCurrencyJsonIsNullTest(){
+        String result = null;
+        Currency currency = jsonMapper.jsonMapToCurrency(result);
+        Assertions.assertNull(currency);
+
     }
 
 }
