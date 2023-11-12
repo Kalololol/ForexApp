@@ -12,6 +12,8 @@ public class Currency {
         this.code = code;
         this.mid = mid;
     }
+
+
     public LocalDate getDate() {
         return date;
     }

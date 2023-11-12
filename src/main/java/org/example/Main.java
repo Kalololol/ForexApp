@@ -11,6 +11,13 @@ public class Main {
         String result = currencyDownloadApi.getCurrencyExchangeRate("usd", "2023-11-110");
         System.out.println(result);
 
+        Currency currency = null;
+        JsonMapper jsonMapper = new JsonMapper();
+
+        System.out.println(jsonMapper.currencyMapToJson(currency));
+
+
+
 
 
     }
