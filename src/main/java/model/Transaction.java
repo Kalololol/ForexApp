@@ -1,5 +1,7 @@
 package model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.time.LocalDate;
 
 public class Transaction {
@@ -7,18 +9,13 @@ public class Transaction {
     private String codeCurrency;
     private double valueCurrency;
     private double valuePln;
+    private double resultTransaction;
 
     public Transaction(LocalDate dateTransaction, String codeCurrency, double valueCurrency) {
         this.dateTransaction = dateTransaction;
         this.codeCurrency = codeCurrency;
         this.valueCurrency = valueCurrency;
     }
-
-    public void setResultTransaction(double resultTransaction) {
-        this.resultTransaction = resultTransaction;
-    }
-
-    private double resultTransaction;
 
     public Transaction(LocalDate dateTransaction, String codeCurrency, double valueCurrency, double valuePln, double resultTransaction) {
         this.dateTransaction = dateTransaction;
@@ -28,7 +25,9 @@ public class Transaction {
         this.resultTransaction = resultTransaction;
     }
 
-
+    public void setResultTransaction(double resultTransaction) {
+        this.resultTransaction = resultTransaction;
+    }
     public LocalDate getDateTransaction() {
         return dateTransaction;
     }
@@ -47,6 +46,10 @@ public class Transaction {
 
     public double getResultTransaction() {
         return resultTransaction;
+    }
+
+    public void setValuePln(double valuePln) {
+        this.valuePln = valuePln;
     }
 }
 

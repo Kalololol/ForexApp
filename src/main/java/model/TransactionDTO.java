@@ -3,9 +3,14 @@ package model;
 import java.time.LocalDate;
 
 public class TransactionDTO {
-    private LocalDate dateTransaction;
+    private String dateTransaction;
     private String codeCurrency;
-    private double valueCurrency;
-    private double valuePln;
-    private double resultTransaction;
+    private String valueCurrency;
+
+
+    public TransactionDTO(String dateTransaction, String codeCurrency, String valueCurrency) {
+        this.dateTransaction = dateTransaction;
+        this.codeCurrency = codeCurrency;
+        this.valueCurrency = valueCurrency;
+    }
 }
