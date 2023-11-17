@@ -17,7 +17,7 @@ public class CalculateTransaction {
 
         Double valuePLN = CalculateValue(codeCurrency, dateTransaction);
 
-        if(valuePLN == null) {
+        if(valuePLN == null || valuePLN == 0.00) {
             Transaction transaction =  new Transaction(date, codeCurrency, valueTransaction, 0.00, 0.00, false);;
             return transaction;
         }
@@ -40,7 +40,7 @@ public class CalculateTransaction {
         String date = transaction.getDateTransaction().toString();
         Double valuePLN = CalculateValue(transaction.getCodeCurrency(), date);
 
-        if(valuePLN == null) {
+        if(valuePLN == null || valuePLN == 0.00) {
             transaction.setValuePln(0.00);
             transaction.setResultTransaction(0.00);
             transaction.setDone(false);
@@ -58,6 +58,9 @@ public class CalculateTransaction {
     public double CalculateValue(String codeCurrency, String dateTransaction){
         String downloadCourse = currencyDownloadApi.getCurrencyExchangeRate(codeCurrency, dateTransaction);
         Currency currency = jsonMapper.jsonMapToCurrency(downloadCourse);
+        if(currency == null){
+            return 0.00;
+        }
         return currency.getMid();
     }
     public double percentageResult(ArrayList<Transaction> transactionArrayList){
