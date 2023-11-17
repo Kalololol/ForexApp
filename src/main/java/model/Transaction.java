@@ -10,6 +10,7 @@ public class Transaction {
     private double valueCurrency;
     private double valuePln;
     private double resultTransaction;
+    private boolean isDone;
 
     public Transaction(LocalDate dateTransaction, String codeCurrency, double valueCurrency) {
         this.dateTransaction = dateTransaction;
@@ -17,12 +18,21 @@ public class Transaction {
         this.valueCurrency = valueCurrency;
     }
 
-    public Transaction(LocalDate dateTransaction, String codeCurrency, double valueCurrency, double valuePln, double resultTransaction) {
+//    public Transaction(LocalDate dateTransaction, String codeCurrency, double valueCurrency, double valuePln, double resultTransaction) {
+//        this.dateTransaction = dateTransaction;
+//        this.codeCurrency = codeCurrency;
+//        this.valueCurrency = valueCurrency;
+//        this.valuePln = valuePln;
+//        this.resultTransaction = resultTransaction;
+//    }
+
+    public Transaction(LocalDate dateTransaction, String codeCurrency, double valueCurrency, double valuePln, double resultTransaction, boolean isDone) {
         this.dateTransaction = dateTransaction;
         this.codeCurrency = codeCurrency;
         this.valueCurrency = valueCurrency;
         this.valuePln = valuePln;
         this.resultTransaction = resultTransaction;
+        this.isDone = isDone;
     }
 
     public void setResultTransaction(double resultTransaction) {
@@ -50,6 +60,14 @@ public class Transaction {
 
     public void setValuePln(double valuePln) {
         this.valuePln = valuePln;
+    }
+
+    public boolean getIsDone() {
+        return isDone;
+    }
+
+    public void setDone(boolean done) {
+        isDone = done;
     }
 }
 

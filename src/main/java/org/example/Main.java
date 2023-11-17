@@ -2,8 +2,11 @@ package org.example;
 
 
 import api.CurrencyDownloadApi;
+import logic.CSVMapper;
+import logic.CalculateTransaction;
 import logic.JsonMapper;
 import model.Currency;
+import model.Transaction;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -16,32 +19,41 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-//        CurrencyDownloadApi currencyDownloadApi = new CurrencyDownloadApi();
-//        String result = currencyDownloadApi.getCurrencyExchangeRate("usd", "2023-11-11");
-//
-//        JsonMapper jsonMapper = new JsonMapper();
-//        Currency currency = jsonMapper.jsonMapToCurrency(result);
-//
-//        String data = currency.getDate().toString();
-//        System.out.println(data);
 
-        File file = new File("test.csv");
+        CSVMapper csvMapper = new CSVMapper();
+        CalculateTransaction calculateTransaction = new CalculateTransaction();
 
-        Path plik = Paths.get("test.csv");
-        ArrayList<String> odczyt = new ArrayList();
-        try {
-            odczyt = (ArrayList<String>) Files.readAllLines(plik);
-            for (String czytaj : odczyt){
-                System.out.println(czytaj);
-                String[] liniaDaneString = czytaj.split(",");
-                for(String tekst : liniaDaneString){
-                    System.out.println(tekst);
-                }
-            }
+        ArrayList<Transaction> transactionArrayList = csvMapper.readingFromFile("test");
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        for (Transaction transaction : transactionArrayList){
+            System.out.println("----------------------");
+            System.out.println("Data: " + transaction.getDateTransaction());
+            System.out.println();
+            System.out.println("Wartość pozycji: " + transaction.getValueCurrency() + " " + transaction.getCodeCurrency());
+            System.out.println("Kurs 1 " + transaction.getCodeCurrency() + ": " + transaction.getValuePln() + " PLN");
+            System.out.println("Wartość pozycji po przeliczeniu : " + transaction.getResultTransaction() + " PLN");
+            System.out.println("Czy przeliczenie wykonano poprawnie: " + transaction.getIsDone());
+
         }
+
+        ArrayList<Transaction> transactionsAfterConvert = calculateTransaction.TransactionList(transactionArrayList);
+
+        System.out.println("Po wykonaniu obliczeń");
+        for (Transaction transaction : transactionsAfterConvert){
+            System.out.println("Data: " + transaction.getDateTransaction());
+            System.out.println();
+            System.out.println("Wartość pozycji: " + transaction.getValueCurrency() + " " + transaction.getCodeCurrency());
+            System.out.println("Kurs 1 " + transaction.getCodeCurrency() + ": " + transaction.getValuePln() + " PLN");
+            System.out.println("Wartość pozycji po przeliczeniu : " + transaction.getResultTransaction() + " PLN");
+            System.out.println("Czy przeliczenie wykonano poprawnie: " + transaction.getIsDone());
+        }
+
+        double precentResult = calculateTransaction.percentageResult(transactionsAfterConvert);
+        System.out.println("Udało się przeliczyć " + precentResult + "% transakcji");
+
+
+
+
 
 
     }

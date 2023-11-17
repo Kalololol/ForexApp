@@ -1,7 +1,6 @@
 package logic;
 
 import model.Transaction;
-import model.TransactionDTO;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -10,9 +9,8 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.List;
 
-public class SaveTransaction {
+public class CSVMapper {
 
     public ArrayList<Transaction> readingFromFile(String fileName){
 
