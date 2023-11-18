@@ -1,7 +1,6 @@
 package logic;
 
 import model.Transaction;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -9,14 +8,15 @@ import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CSVMapper {
 
-    public ArrayList<Transaction> readingFromFile(String fileName){
+    public List<Transaction> readingFromFile(String fileName){
 
         Path file = Paths.get(fileName + ".csv");
-        ArrayList<String> arrayFromFile = new ArrayList();
-        ArrayList<Transaction> transactionArrayList = new ArrayList<>();
+        List<String> arrayFromFile = new ArrayList();
+        List<Transaction> transactionArrayList = new ArrayList<>();
 
         try {
             arrayFromFile = (ArrayList<String>) Files.readAllLines(file);
@@ -26,8 +26,7 @@ public class CSVMapper {
                 LocalDate date = LocalDate.parse(lineFromArray[0], formatter);
                 double valueCurrency = Double.parseDouble(lineFromArray[2]);
 
-                Transaction transaction = new Transaction(date, lineFromArray[1], valueCurrency);
-                transactionArrayList.add(transaction);
+                transactionArrayList.add(new Transaction(date, lineFromArray[1], valueCurrency));
             }
         } catch (IOException e) {
             throw new RuntimeException(e);

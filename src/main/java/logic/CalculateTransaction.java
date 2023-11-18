@@ -7,38 +7,37 @@ import model.Transaction;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class CalculateTransaction {
-    private CurrencyDownloadApi currencyDownloadApi = new CurrencyDownloadApi();
-    private JsonMapper jsonMapper = new JsonMapper();
+    private final CurrencyDownloadApi currencyDownloadApi = new CurrencyDownloadApi();
+    private final JsonMapper jsonMapper = new JsonMapper();
     public Transaction manualCalculate(double valueTransaction, String codeCurrency, String dateTransaction){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         LocalDate date = LocalDate.parse(dateTransaction, formatter);
 
-        Double valuePLN = CalculateValue(codeCurrency, dateTransaction);
+        Double valuePLN = convertCurrency(codeCurrency, dateTransaction);
 
-        if(valuePLN == null || valuePLN == 0.00) {
+        if(valuePLN ==  null || valuePLN ==  0.00) {
             Transaction transaction =  new Transaction(date, codeCurrency, valueTransaction, 0.00, 0.00, false);;
             return transaction;
         }
 
         double convertTransaction = valueTransaction * valuePLN;
-        Transaction transaction = new Transaction(date, codeCurrency, valueTransaction, valuePLN, convertTransaction, true);
-
-        return transaction;
+        return new Transaction(date, codeCurrency, valueTransaction, valuePLN, convertTransaction, true);
     }
 
-    public ArrayList<Transaction> TransactionList(ArrayList<Transaction> transactionArrayList){
-        ArrayList<Transaction> result = new ArrayList<>();
+    public List<Transaction> transactionList(List<Transaction> transactionArrayList){
+        List<Transaction> result = new ArrayList<>();
         for(Transaction transaction : transactionArrayList){
             result.add(automaticCalculate(transaction));
         }
         return result;
     }
-    public Transaction automaticCalculate(Transaction transaction){
+    private Transaction automaticCalculate(Transaction transaction){
 
         String date = transaction.getDateTransaction().toString();
-        Double valuePLN = CalculateValue(transaction.getCodeCurrency(), date);
+        Double valuePLN = convertCurrency(transaction.getCodeCurrency(), date);
 
         if(valuePLN == null || valuePLN == 0.00) {
             transaction.setValuePln(0.00);
@@ -55,7 +54,7 @@ public class CalculateTransaction {
         return transaction;
     }
 
-    public double CalculateValue(String codeCurrency, String dateTransaction){
+    private double convertCurrency(String codeCurrency, String dateTransaction){
         String downloadCourse = currencyDownloadApi.getCurrencyExchangeRate(codeCurrency, dateTransaction);
         Currency currency = jsonMapper.jsonMapToCurrency(downloadCourse);
         if(currency == null){
@@ -63,16 +62,13 @@ public class CalculateTransaction {
         }
         return currency.getMid();
     }
-    public double percentageResult(ArrayList<Transaction> transactionArrayList){
+    public double percentageResult(List<Transaction> transactionArrayList){
         int sum = 0;
-        double average = 0.00;
         for (Transaction transaction : transactionArrayList){
             if(transaction.getIsDone() == true){
                 sum++;
             }
         }
-        average = sum / transactionArrayList.size() * 100;
-
-        return average;
+        return (sum / transactionArrayList.size()) * 100;
     }
 }
