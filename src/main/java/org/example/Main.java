@@ -1,27 +1,11 @@
 package org.example;
 
 
-import api.CurrencyDownloadApi;
-import logic.CSVMapper;
-import logic.CalculateTransaction;
-import logic.JsonMapper;
-import model.Currency;
-import model.Transaction;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
 
         ForexAppRun forexAppRun = new ForexAppRun();
-        forexAppRun.Start();
+        forexAppRun.actionLoop();
 //        CSVMapper csvMapper = new CSVMapper();
 //        CalculateTransaction calculateTransaction = new CalculateTransaction();
 //

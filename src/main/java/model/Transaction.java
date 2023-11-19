@@ -50,5 +50,17 @@ public class Transaction {
     public void setDone(boolean done) {
         isDone = done;
     }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "dateTransaction=" + dateTransaction +
+                ", codeCurrency='" + codeCurrency + '\'' +
+                ", valueCurrency=" + valueCurrency +
+                ", valuePln=" + valuePln +
+                ", resultTransaction=" + resultTransaction +
+                ", isDone=" + isDone +
+                '}';
+    }
 }
 
