@@ -32,12 +32,13 @@ public class CurrencyDownloadApi {
          SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
          String formattedDate = dateFormat.format(day);
          HttpResponse<String> response;
-         if(!(code.equals("usd")) && !(code.equals("eur"))){
+         String codeLowerCase = code.toLowerCase();
+         if(!(codeLowerCase.equals("usd")) && !(codeLowerCase.equals("eur"))){
              return null;
          }
           try {
                     do {
-                         URI uri = URI.create(("http://api.nbp.pl/api/exchangerates/rates/a/" + code + "/" + formattedDate));
+                         URI uri = URI.create(("http://api.nbp.pl/api/exchangerates/rates/a/" + codeLowerCase + "/" + formattedDate));
                          HttpRequest request = HttpRequest.newBuilder()
                                  .uri(uri)
                                  .GET()

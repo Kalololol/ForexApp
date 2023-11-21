@@ -6,6 +6,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import model.Currency;
+import model.Transaction;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -37,9 +38,6 @@ public class JsonMapper {
     }
     public String currencyMapToJson (Currency currency){
         try {
-//            if (currency == null){
-//                return null;
-//            }
             DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm a z");
             objectMapper.setDateFormat(df);
             return objectMapper.writeValueAsString(currency);
